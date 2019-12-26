@@ -1,0 +1,24 @@
+include ./article-sort.pug
+mixin slideArticle()
+  - var posts = site.posts.filter(item => item.layout === 'slides')
+  #archive
+    .article-sort-title= 'Slides - ' + posts.length
+    +articleSort(posts)
+
+mixin slide(item)
+  - var slide = page.slide || theme.slide
+  - var defaultSlide = theme.slide
+  section(
+    data-markdown
+    data-separator=slide.separator || defaultSlide.separator
+    data-separator-vertical=slide.separator_vertical || defaultSlide.separator_vertical
+    data-charset=slide.charset || defaultSlide.charset)
+      script(type="text/template")!= item._content
+
+mixin slideIframe(url)
+  .content
+    iframe(src=url_for(url) frameborder="0")
+
+mixin postSlideIframe(url)
+  .post-iframe
+    iframe(src=url frameborder="0")

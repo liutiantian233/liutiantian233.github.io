@@ -1,0 +1,374 @@
+headStyle(fontsize)
+  padding-left: unit(fontsize + 0.1, "rem")
+
+  &:before
+    top: calc(50% - unit(fontsize / 2 - 0.05, "rem"))
+    font-size: unit(fontsize, "rem")
+
+  &:hover
+    padding-left: unit(fontsize + 0.2, "rem")
+
+#post-title
+  font-size: 1.4rem
+
+  &.plain
+    margin-bottom: 0.3rem
+    border-bottom: 1px solid $light-grey
+    cursor: pointer
+    transition: all 0.2s ease-in-out
+
+    &:hover
+      border-bottom: 1px solid $light-blue
+      color: $light-blue
+
+#post
+  overflow: hidden
+
+  &-meta
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.15)
+
+  #post-meta
+    color: $grey
+
+    a
+      text-decoration: none
+
+    i.fa.fa-comment-o
+      margin-right: 0.2rem
+
+#top-container
+  position: relative
+  margin-bottom: 1rem
+  background-color: $light-blue
+  background-attachment: fixed
+  background-position: center
+  background-size: cover
+  opacity: 0
+
+  &.no-bg
+    $bg-svg += ""
+    background-color: $light-blue
+    background-image: url($bg-svg) !important
+    background-size: auto
+
+  &.plain
+    margin-bottom: 1rem
+    height: 56px
+
+  a
+    color: $light-grey
+    text-decoration: none
+    transition: all 0.3s ease-out
+
+    &:hover
+      color: $white
+
+  #top-img
+    padding: 0
+    border: none
+
+  #site-name
+    font-weight: bold
+    cursor: pointer
+
+  #post-info
+    padding: 10rem 1rem
+    width: 100%
+    color: $light-grey
+    text-align: center
+
+  #post-title
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.15)
+    font-size: 1.3rem
+
+  i.fa.fa-angle-right
+    margin: 0 0.3rem 0 0.2rem
+
+.post-meta
+  &__separator
+    margin: 0 0.3rem
+
+  &__icon
+    margin-right: 0.2rem
+
+  &__tag-list
+    margin-bottom: 0.5rem
+
+  &__tags
+    margin-right: 0.4rem
+    padding: 0.2rem 0.6rem
+    border: 1px solid $light-blue
+    border-radius: 0.6rem
+    background: $white
+    color: $light-blue
+    text-decoration: none
+    font-size: 12px
+    cursor: pointer
+    transition: all 0.2s ease-in-out
+
+    &:hover
+      background: $light-blue
+      color: $white
+
+.layout
+  margin: 0 auto
+  width: $content-width
+  opacity: 0
+
+#content-inner
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    cursor: pointer
+    transition: all 0.2s ease-out
+
+    &:before
+      position: absolute
+      top: calc(50% - 0.35rem)
+      left: 0
+      color: $light-red
+      content: "\f0c1"
+      font: normal normal normal 14px / 1 FontAwesome
+      font-size: 0.8rem
+      transition: all 0.2s ease-out
+
+    &:hover
+      padding-left: 1.1rem
+
+      &:before
+        color: $light-blue
+
+  h1
+    headStyle(1)
+
+  h2
+    headStyle(0.9)
+
+  h3
+    headStyle(0.8)
+
+  h4
+    headStyle(0.7)
+
+  h5
+    headStyle(0.6)
+
+  h6
+    headStyle(0.6)
+
+  ol,
+  ul
+    margin-top: 0.4rem
+    padding: 0 0 0 0.8rem
+    list-style: none
+    counter-reset: li
+
+    p
+      margin: 0
+
+    ol,
+    ul
+      padding-left: 0.5rem
+
+    li
+      position: relative
+      margin: 0.2rem 0
+      padding: 0.1rem 0.5rem 0.1rem 1.5rem
+
+      &:hover
+        &:before
+          transform: rotate(360deg)
+
+      &:before
+        position: absolute
+        top: 0
+        left: 0
+        background: $light-blue
+        color: $white
+        cursor: pointer
+        transition: all 0.3s ease-out
+
+  ol
+    > li
+      &:before
+        margin-top: 0.2rem
+        width: w = 1.2rem
+        height: h = w
+        border-radius: 0.5 * w
+        content: counter(li)
+        counter-increment: li
+        text-align: center
+        font-size: 0.6rem
+        line-height: h
+
+  ul
+    > li
+      &:hover
+        &:before
+          border-color: $ruby
+
+      &:before
+        $w = 0.3rem
+        top: 10px
+        margin-left: 0.45rem
+        width: w = $w
+        height: h = w
+        border: 0.5 * w solid $light-blue
+        border-radius: w
+        background: $white
+        content: ""
+        line-height: h
+
+#post-content
+  margin-bottom: 1rem
+
+a
+  color: $a-link-color
+  transition: all 0.2s
+
+  &:hover
+    color: $light-blue
+    text-decoration: none
+
+  &#site-name
+    text-decoration: none
+
+a.fancybox
+  outline: none
+
+  &:focus
+    outline: none
+
+  display: inline-block
+  width: 100%
+  text-align: center
+  text-decoration: none
+
+img
+  padding: $img-border-padding
+  max-width: 100%
+  border: 1px solid $img-border-color
+  transition: all 0.2s
+
+  &:hover
+    box-shadow: 0 0 8px 0 rgba(232, 237, 250, 0.6), 0 2px 4px 0 rgba(232, 237, 250, 0.5)
+
+.fa-clipboard
+  position: fixed
+  right: 10px
+  z-index: 1
+  margin-top: -1rem
+  color: $highlight-aqua
+  cursor: pointer
+  transition: color 0.2s
+
+  &:hover
+    color: darken($highlight-aqua, 20%)
+
+.copy-notice
+  position: absolute
+  top: 4px
+  right: 0
+  z-index: 1
+  background: darken($highlight-background, 5)
+  color: $highlight-aqua
+  opacity: 0
+
+.post-copyright
+  position: relative
+  margin-bottom: 1rem
+  padding: 0.5rem 0.8rem
+  border: 1px solid $light-grey
+  transition: box-shadow 0.3s ease-in-out
+
+  &:before
+    position: absolute
+    top: t = 0.5rem
+    right: t
+    width: w = 0.8rem
+    height: w
+    border-radius: w
+    background: $light-blue
+    content: ""
+
+  &:after
+    position: absolute
+    top: t = 0.7rem
+    right: t
+    width: w = 0.4rem
+    height: w
+    border-radius: w
+    background: $white
+    content: ""
+
+  &:hover
+    box-shadow: 0 0 8px 0 rgba(232, 237, 250, 0.6), 0 2px 4px 0 rgba(232, 237, 250, 0.5)
+
+  &-meta
+    color: $light-blue
+    font-weight: bold
+
+  &-info
+    a
+      word-break: break-word
+
+.post-qr-code
+  text-align: center
+
+  &-item
+    display: inline-block
+    margin-bottom: 0.8rem
+
+  img
+    margin: 0 1rem 0.1rem 1rem
+    width: w = 10rem
+    height: w
+
+  &__desc
+    color: $grey
+
+.post-adv
+  margin: 1rem 0
+
+@media screen and (max-width: $sm)
+  .layout
+    margin: 0 30px
+    width: auto
+
+  .recent-post-item
+    .content
+      iframe
+        width: 100%
+        height: 177px
+
+  .post-qr-code
+    img
+      width: w = 6rem
+      height: w
+
+  #top-container
+    background-attachment: local
+
+    #post-title
+      font-size: 1.1rem
+
+  #post-title
+    font-size: 1.1rem
+
+@media screen and (min-width: $sm)
+  #top-container
+    #post-title
+      font-size: 2rem
+
+@media screen and (min-width: $md)
+  .layout
+    width: $content-large-width
+
+  .recent-post-item
+    .content
+      iframe
+        width: $content-large-width
+        height: $iframe-large-height

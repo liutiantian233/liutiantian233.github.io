@@ -1,0 +1,14 @@
+{
+  "extends": "standard",
+  "env": {
+    "jquery": true
+  },
+  "globals": {
+    "anime": false,
+    "debounce": false,
+    "throttle": false,
+    "isMobile": false,
+    "instantsearch": false,
+    "GLOBAL_CONFIG": false
+  }
+}

@@ -1,0 +1,49 @@
+sidebar:
+  articles: 文章
+  tags: 标签
+  categories: 分类
+  toggle_site: 切换站点概览
+  toggle_article: 切换文章详情
+  catalog: 目录
+  have_read: 你已经读了
+
+footer:
+  driven: 驱动
+  theme: 主题
+
+copy:
+  success: 复制成功
+  error: 复制错误
+  noSupport: 浏览器不支持
+
+page:
+  articles: 文章总览
+  tag: 标签
+  category: 分类
+  archives: 归档
+
+sticky: 置顶
+no_title: 无题
+read_more: 阅读更多
+
+post:
+  wordcount: 字数总计
+  min2read: '阅读时长: %s 分钟'
+  copyright:
+    author: 文章作者
+    link: 文章链接
+    copyright_notice: 版权声明
+    copyright_content: '本博客所有文章除特别声明外，均采用 <a href="%s">%s</a> 许可协议。转载请注明来自 <a href="%s">%s</a>！'
+
+search: 搜索
+algolia_search:
+  input_placeholder: 搜索文章
+  hits_empty: "找不到您查询的内容:${query}"
+  hits_stats: "找到 ${hits} 条结果，用时 ${time} 毫秒"
+
+local_search:
+  label: 本地搜索
+  input_placeholder: 搜索文章
+  hits_empty: "找不到您查询的内容:${query}"
+  powered: "提供支持"
+  by: 由

@@ -1,0 +1,49 @@
+sidebar:
+  articles: Articles
+  tags: Tags
+  categories: Categories
+  toggle_site: Toggle site
+  toggle_article: Toggle article
+  catalog: Catalog
+  have_read: You've read
+
+footer:
+  driven: Driven
+  theme: Theme
+
+copy:
+  success: Copy successfully
+  error: Copy error
+  noSupport: The browser does not support
+
+page:
+  articles: Articles
+  tag: Tag
+  category: Category
+  archives: Archives
+
+sticky: Sticky
+no_title: No title
+read_more: Read more
+
+post:
+  wordcount: Word count
+  min2read: 'Reading time: %s min'
+  copyright:
+    author: Author
+    link: Link
+    copyright_notice: Copyright Notice
+    copyright_content: 'All articles in this blog are licensed under <a href="%s">%s</a> unless stating additionally.'
+
+
+search: Search
+algolia_search:
+  input_placeholder: Search for Posts
+  hits_empty: "We didn't find any results for the search: ${query}."
+  hits_stats: "${hits} results found in ${time} ms"
+
+local_search:
+  label: Local search
+  input_placeholder: Search for Posts
+  hits_empty: "We didn't find any results for the search: ${query}"
+  powered_by: Powered by

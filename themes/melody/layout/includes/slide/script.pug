@@ -1,0 +1,38 @@
+script(src=url_for("https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/lib/js/head.min.js"))
+script(src=url_for("https://cdn.jsdelivr.net/npm/reveal.js@3.6.0/js/reveal.min.js"))
+
+- var slide = page.slide || theme.slide
+- var defaultSlide = theme.slide
+- var mouseWheel = slide.mouseWheel || defaultSlide.mouseWheel 
+- var transition = slide.transition || defaultSlide.transition
+- var transitionSpeed = slide.transitionSpeed || defaultSlide.transitionSpeed
+- var parallaxBackgroundImage = slide.parallaxBackgroundImage || defaultSlide.parallaxBackgroundImage
+- var parallaxBackgroundSize = slide.parallaxBackgroundSize || defaultSlide.parallaxBackgroundSize
+- var parallaxBackgroundHorizontal = slide.parallaxBackgroundHorizontal || defaultSlide.parallaxBackgroundHorizontal
+- var parallaxBackgroundVertical = slide.parallaxBackgroundVertical || defaultSlide.parallaxBackgroundVertical
+
+script.
+  Reveal.initialize({
+    mouseWheel: !{mouseWheel},
+    transition: '!{transition}',
+    transitionSpeed: '!{transitionSpeed}',
+    parallaxBackgroundImage: '!{parallaxBackgroundImage}',
+    parallaxBackgroundSize: '!{parallaxBackgroundSize}',
+    parallaxBackgroundHorizontal: '!{parallaxBackgroundHorizontal}',
+    parallaxBackgroundVertical: '!{parallaxBackgroundVertical}',
+    markdown: {
+      smartypants: true
+    },
+    dependencies: [
+      { src: '/js/third-party/reveal/marked.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '/js/third-party/reveal/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      // Syntax highlight for <code> elements
+      { src: '/js/third-party/reveal/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      // Zoom in and out with Alt+click
+      { src: '/js/third-party/reveal/zoom.min.js', async: true },
+      // Speaker notes
+      { src: '/js/third-party/reveal/notes.min.js', async: true },
+      // MathJax
+      { src: '/js/third-party/reveal/math.min.js', async: true }
+    ]
+  });

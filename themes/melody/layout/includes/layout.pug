@@ -1,0 +1,64 @@
+
+- var pageTitle = page.title || config.subtitle || ''
+- if (is_archive()) pageTitle = _p('page.archives')
+- if (is_tag()) pageTitle = _p('page.tag') + ': ' + page.tag
+- if (is_category()) pageTitle = _p('page.category') + ': ' + page.category
+- if (is_month()) pageTitle += ': ' + page.month + '/' + page.year
+- if (is_year()) pageTitle += ': ' + page.year
+- pageTitle ? pageTitle += ' | ' + config.title : pageTitle = config.title
+
+- var pageDescription = page.description || page.title || config.description || ''
+- var pageKeywords = (config.keywords || []).join(',')
+- if (page.tags && page.tags.data) pageKeywords = page.tags.data.map(function(tag) {return tag.name;}).join(',')
+- var pageAuthor = config.email ? config.author + ',' + config.email : config.author
+- var pageCopyright = config.copyright || config.author
+
+doctype html
+html(lang=config.language)
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+    meta(name="description" content=pageDescription)
+    meta(name="keywords" content=pageKeywords)
+    meta(name="author" content=pageAuthor)
+    meta(name="copyright" content=pageCopyright)
+    title= pageTitle
+    !=favicon_tag(config.favicon || theme.favicon || '/melody-favicon.ico')
+    if theme.stylesheets !== undefined && theme.stylesheets.length > 0
+      each url in theme.stylesheets
+        link(rel='stylesheet', href=url_for(url) + '?version=' + version())
+    each item in theme.cdn.css
+      if item !== undefined
+        link(rel='stylesheet', href=item + '?version=' + version())
+    include ./head.pug
+    include ./config.pug
+  body
+    if theme.fireworks
+      canvas.fireworks
+    i.fa.fa-arrow-right#toggle-sidebar(aria-hidden="true")
+    include ./sidebar.pug
+    if (!is_post())
+      include ./nav.pug
+    #content-outer
+      block top_img
+      #content-inner.layout
+        if body
+          div!= body
+        else
+          block content
+    - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img || true
+    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
+    - var footer_bg_class= bg_img ? 'footer-bg' : ''
+    footer(style=bg_img class=footer_bg_class)
+      include ./footer.pug
+    i.fa.fa-arrow-up#go-up(aria-hidden="true")
+    each item in theme.cdn.js
+      if item !== undefined
+        script(src=url_for(item))
+    if theme.scripts !== undefined && theme.scripts.length > 0
+      //- scripts list from config.yml
+      each url in theme.scripts
+        script(src=url_for(url) + '?version=' + version())
+    include ./additional-js.pug
+    include ./search/index.pug

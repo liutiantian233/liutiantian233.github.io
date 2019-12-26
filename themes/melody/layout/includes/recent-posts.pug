@@ -1,0 +1,46 @@
+each article in page.posts.data
+  .recent-post-item.article-container
+    - var link = article.link || article.path
+      a.article-title(href=url_for(link))= article.title || _p('no_title')
+    if (article.top)
+      span.article-meta
+        i.fa.fa-thumb-tack.article-meta__icon.sticky
+        span.sticky= _p('sticky')
+        span.article-meta__separator(style="margin-right: 0.3rem") |
+    if (theme.post_meta.date_type)
+      - var date_type = theme.post_meta.date_type == 'updated' ? 'updated' : 'date'
+      time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(article[date_type], config.date_format)]
+    if (article.layout === 'slides')
+      a.article-type(href='/slides') Slides
+    if (theme.post_meta.categories && article.categories.data.length > 0)
+      span.article-meta
+        span.article-meta__separator |
+        each item, index in article.categories.data
+          i.fa.fa-inbox.article-meta__icon(aria-hidden="true")
+          a(href=url_for(item.path)).article-meta__categories #[=item.name]
+          if (index < article.categories.data.length - 1)
+              i.fa.fa-angle-right(aria-hidden="true")
+    if (theme.post_meta.tags && article.tags.data.length > 0)
+      span.article-meta.tags
+        span.article-meta__separator |
+        each item, index in article.tags.data
+          i.fa.fa-tag.article-meta__icon(aria-hidden="true")
+          a(href=url_for(item.path)).article-meta__tags #[=item.name]
+          if (index < article.tags.data.length - 1)
+            span.article-meta__link -
+    if (article.layout === 'slides')
+      include ./mixins/slide.pug 
+      - var iframeLink = article.iframe || link
+      +slideIframe(iframeLink)
+    else if article.excerpt
+      .content!= article.excerpt
+      a.more(href=url_for(link) + '#more')= _p('read_more')
+    else if theme.auto_excerpt && theme.auto_excerpt.enable
+      - const content = strip_html(article.content)
+      - let expert = content.substring(0, theme.auto_excerpt.length) 
+      - content.length > theme.auto_excerpt.length ? expert += ' ...' : ''
+      .content!= expert
+      a.more(href=url_for(link) + '#more' style="margin-top: 14px")= _p('read_more')
+    else
+      .content!= article.content
+    hr
