@@ -67,10 +67,13 @@ category_map:
   Tech: tech
   Daily: daily
   C++: cpp
+  移动端: phoneapp
 tag_map:
   C++: cpp
   Mac: mac
   Whine: whine
+  Android开发: android
+  iOS开发: ios
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
